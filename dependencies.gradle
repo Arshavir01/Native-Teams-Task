@@ -1,0 +1,67 @@
+ext {
+    compileSdkVer = 33
+    targetSdkVer = 33
+    minSdkVer = 26
+    hiltVersion = "2.42"
+    kotlinVersion = "1.7.20"
+    retrofitVersion = "2.9.0"
+    coroutinesVersion = "1.6.4"
+    androidxKtxVersion = "1.8.0"
+    viewModelVersion = "2.5.1"
+    lifecycleExtensionsVersion = "2.2.0"
+    lifecycleRuntimeVersion = "2.1.0"
+    lyfecycleCommonVersion = "2.5.1"
+    okHttp3Version = "4.10.0"
+    gsonVersion = "2.10"
+    navigationVersion = "2.5.3"
+    androidXFragmentVersion = "1.5.4"
+    constraintLayoutVersion = "2.1.4"
+    multidexVersion = "2.0.1"
+    appCompatVersion = "1.6.0"
+    constraintLayoutVersion = "2.1.4"
+    recyclerViewVersion = "1.2.1"
+    swipeRefreshLayoutVersion = "1.1.0"
+
+
+    app = [
+            multidex: "androidx.multidex:multidex:$multidexVersion",
+    ]
+    common = [
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            hilt              : "com.google.dagger:hilt-android:$hiltVersion",
+            javaxInject       : "javax.inject:javax.inject:1",
+            androidxKtx       : "androidx.core:core-ktx:$androidxKtxVersion",
+            gson              : "com.google.code.gson:gson:$gsonVersion",
+            appCompat         : "androidx.appcompat:appcompat:$appCompatVersion",
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+    ]
+
+    lifecycle = [
+            viewModel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelVersion",
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion",
+            lifecycleCommon    : "androidx.lifecycle:lifecycle-common-java8:$lyfecycleCommonVersion",
+            lifecycleRuntimektx: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeVersion",
+    ]
+    retrofit = [
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitConverterScalars: "com.squareup.retrofit2:converter-scalars:$retrofitVersion",
+            okHttp                  : "com.squareup.okhttp3:okhttp:$okHttp3Version",
+            okHttpUrlConnection     : "com.squareup.okhttp3:okhttp-urlconnection:$okHttp3Version",
+            okHttpInterceptor       : "com.squareup.okhttp3:logging-interceptor:$okHttp3Version",
+    ]
+    navigation = [
+            navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            androidXfragment     : "androidx.fragment:fragment:$androidXFragmentVersion",
+            uiKtx                : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+            navigationRuntimeKtx : "androidx.navigation:navigation-runtime-ktx:$navigationVersion",
+    ]
+    compilers = [
+            hiltCompiler        : "com.google.dagger:hilt-compiler:$hiltVersion",
+            androidxHiltCompiler: "androidx.hilt:hilt-compiler:1.0.0"
+    ]
+    stocksScreen = [
+            recyclerView : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            swipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayoutVersion",
+    ]
+}

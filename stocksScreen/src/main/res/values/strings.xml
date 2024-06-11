@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="stocks">Stocks</string>
+    <string name="empty_list">Empty List</string>
+</resources>

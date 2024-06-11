@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stockItemTopMarginFirstItem">24dp</dimen>
+    <dimen name="stockItemTopMargin">16dp</dimen>
+    <dimen name="stockItemHorizontalMargin">24dp</dimen>
+    <dimen name="appBarSize">52dp</dimen>
+
+</resources>
