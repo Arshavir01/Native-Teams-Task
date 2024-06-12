@@ -1,11 +1,9 @@
 package com.nativeteams.stocksscreen.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.nativeteams.common.domain.models.StockListItem
-import com.nativeteams.common.domain.repository.StocksRepository
 import com.nativeteams.common.domain.useCase.GetStocksDataUseCase
 import com.nativeteams.common.domain.useCase.Status
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder
 import com.nativeteams.common.data.network.NetworkApiService
 import com.nativeteams.common.data.repository.StocksStocksRepositoryImpl
 import com.nativeteams.common.domain.repository.StocksRepository
-import com.nativeteams.common.domain.useCase.GetStocksDataUseCase
 import com.nativeteams.common.utils.Constants
 import dagger.Module
 import dagger.Provides

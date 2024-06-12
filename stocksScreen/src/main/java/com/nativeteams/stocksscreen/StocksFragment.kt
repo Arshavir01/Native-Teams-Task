@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nativeteams.common.domain.useCase.Status
@@ -17,8 +18,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StocksFragment : Fragment() {
     private lateinit var binding: FragmentStocksBinding
-    private lateinit var viewModel: StocksViewModel
     private lateinit var stockAdapter: StockListViewAdapter
+    private val viewModel: StocksViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +27,6 @@ class StocksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentStocksBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[StocksViewModel::class.java]
         return binding.root
     }
 
