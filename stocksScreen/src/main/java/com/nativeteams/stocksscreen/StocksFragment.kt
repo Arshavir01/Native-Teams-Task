@@ -1,15 +1,14 @@
 package com.nativeteams.stocksscreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nativeteams.common.domain.useCase.Status
 import com.nativeteams.stocksscreen.databinding.FragmentStocksBinding
 import com.nativeteams.stocksscreen.viewModel.StocksViewModel
 import com.nativeteams.stocksscreen.viewModel.StocksViewSate
@@ -51,31 +50,8 @@ class StocksFragment : Fragment() {
     }
 
     private fun bindViewState(viewState: StocksViewSate) {
-        val status = viewState.loading
+        binding.progressBar.isVisible = viewState.isLoading
         val stocksList = viewState.stocksList
-
         stockAdapter.submitList(stocksList)
-
-        when (status) {
-            Status.Loading -> {
-                binding.progressBar.isVisible = true
-            }
-
-            is Status.Error -> {
-                binding.infoText.text = status.message
-                binding.progressBar.isVisible = false
-            }
-
-            Status.Success -> {
-                binding.infoText.text = getString(R.string.empty_list)
-                binding.infoText.isVisible = stocksList.isEmpty()
-                binding.progressBar.isVisible = false
-            }
-
-            else -> {
-                binding.progressBar.isVisible = false
-                binding.infoText.isVisible = false
-            }
-        }
     }
 }

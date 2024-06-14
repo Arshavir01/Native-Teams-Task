@@ -4,6 +4,7 @@ import com.nativeteams.common.domain.models.StockData
 import com.nativeteams.common.domain.models.StockListItem
 import com.nativeteams.common.domain.models.StockResult
 import com.nativeteams.common.utils.Constants
+import com.nativeteams.common.utils.CustomResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -16,5 +17,5 @@ interface NetworkApiService {
     suspend fun getStockData(
         @Header("x-rapidapi-key") key: String,
         @Query("region") region: String
-    ): Response<StockData>
+    ): StockData
 }
