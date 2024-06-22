@@ -5,14 +5,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.ComponentActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nativeteams.stocksscreen.databinding.FragmentStocksBinding
 import com.nativeteams.stocksscreen.viewModel.StocksViewModel
 import com.nativeteams.stocksscreen.viewModel.StocksViewSate
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class StocksFragment : Fragment() {
@@ -33,7 +40,12 @@ class StocksFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         setSwipeRefresh()
-        viewModel.viewState.observe(viewLifecycleOwner, ::bindViewState)
+
+        collectLatestLifecycleFlow(viewModel.viewState) { stocksViewSate ->
+            binding.progressBar.isVisible = stocksViewSate.isLoading
+            val stocksList = stocksViewSate.stocksList
+            stockAdapter.submitList(stocksList)
+        }
     }
 
     private fun setSwipeRefresh() {
@@ -49,9 +61,12 @@ class StocksFragment : Fragment() {
         binding.stockList.adapter = stockAdapter
     }
 
-    private fun bindViewState(viewState: StocksViewSate) {
-        binding.progressBar.isVisible = viewState.isLoading
-        val stocksList = viewState.stocksList
-        stockAdapter.submitList(stocksList)
+}
+
+fun <T> Fragment.collectLatestLifecycleFlow(flow: Flow<T>, collect: suspend (T) -> Unit){
+    lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED){
+           flow.collectLatest(collect)
+        }
     }
 }

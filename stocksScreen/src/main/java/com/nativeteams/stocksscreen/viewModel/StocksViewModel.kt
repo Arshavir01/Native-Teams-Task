@@ -9,6 +9,7 @@ import com.nativeteams.common.domain.useCase.GetStocksDataUseCase
 import com.nativeteams.common.utils.CustomResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -20,7 +21,7 @@ class StocksViewModel @Inject constructor(
 ): ViewModel() {
 
     private val _viewState = MutableStateFlow(StocksViewSate())
-     val viewState = _viewState.asLiveData()
+     val viewState = _viewState.asStateFlow()
 
     init {
         getStockList()
